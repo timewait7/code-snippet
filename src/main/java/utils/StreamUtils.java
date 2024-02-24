@@ -3,6 +3,7 @@ package utils;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
@@ -21,5 +22,18 @@ public class StreamUtils {
                 Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(T::toString))),
                 ArrayList::new
             ));
+    }
+
+    /**
+     * List<String>转Map<String, List<String>>
+     *
+     * @param locations
+     * @return
+     */
+    public Map<String, List<String>> list2Map(List<String> locations) {
+        return locations.stream()
+            .map(s -> s.split(":"))
+            .collect(Collectors.groupingBy(a -> a[0],
+                Collectors.mapping(a -> a[1], Collectors.toList())));
     }
 }
