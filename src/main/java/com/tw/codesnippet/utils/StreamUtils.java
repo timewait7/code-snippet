@@ -1,4 +1,4 @@
-package utils;
+package com.tw.codesnippet.utils;
 
 import java.util.ArrayList;
 import java.util.Comparator;
