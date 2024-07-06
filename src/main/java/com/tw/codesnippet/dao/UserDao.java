@@ -1,6 +1,5 @@
 package com.tw.codesnippet.dao;
 
-import com.tw.codesnippet.po.User;
 import org.springframework.stereotype.Repository;
 
 @Repository
