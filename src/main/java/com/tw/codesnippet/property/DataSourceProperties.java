@@ -1,13 +1,14 @@
-package com.tw.codesnippet.config;
+package com.tw.codesnippet.property;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+
 @Component
 @ConfigurationProperties(prefix = "spring.datasource")
 @Data
-public class DatasourceProperties {
+public class DataSourceProperties {
 
     private String driverClassName;
 

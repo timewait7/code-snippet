@@ -1,23 +1,26 @@
 package com.tw.codesnippet.config;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import com.tw.codesnippet.property.DataSourceProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import javax.sql.DataSource;
 
 @Configuration
-@EnableConfigurationProperties(value = {DatasourceProperties.class})
-public class DatabaseConfig {
+@EnableConfigurationProperties(value = {DataSourceProperties.class})
+public class DataSourceConfig {
 
     @Autowired
-    DatasourceProperties datasourceProperties;
+    DataSourceProperties datasourceProperties;
 
-    @Profile(value = {"default", "dev"})
+    public DataSourceProperties getDatasourceProperties() {
+        return datasourceProperties;
+    }
+
     @Bean
     public DataSource devDatasource() throws Exception {
         final ComboPooledDataSource dataSource = new ComboPooledDataSource();
