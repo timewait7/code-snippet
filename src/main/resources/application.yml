@@ -4,3 +4,6 @@ spring:
     url: mysql:jdbc://localhost:3306/test
     username: root
     password: root
+
+  main:
+    allow-bean-definition-overriding: true
