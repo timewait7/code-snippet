@@ -1,19 +1,21 @@
 package com.tw.codesnippet.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.StringRedisTemplate;
+import com.tw.codesnippet.common.Result;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("hello")
 public class HelloController {
 
-    @Autowired
-    private StringRedisTemplate redisTemplate;
+    @GetMapping("world")
+    public Result<String> helloWorld() {
+        return Result.success("Hello, World!");
+    }
 
-    @GetMapping("/hello")
-    public String sayHello() {
-        final Boolean flag = redisTemplate.opsForValue().setIfAbsent("hello", "world");
-        return flag ? redisTemplate.opsForValue().get("hello") : "";
+    @GetMapping("java")
+    public Result<String> helloJava() {
+        return Result.success("Hello, Java!");
     }
 }
