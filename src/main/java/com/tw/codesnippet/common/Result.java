@@ -16,7 +16,7 @@ public class Result<T> {
     private T data;
 
     public static <T> Result<T> success(T data) {
-        return new Result<>(ResultEnum.SUCCESS.getCode(), ResultEnum.SUCCESS.getMessage(), data);
+        return success(ResultEnum.SUCCESS.getMessage(), data);
     }
 
     public static <T> Result<T> success(String message, T data) {
@@ -24,11 +24,15 @@ public class Result<T> {
     }
 
     public static Result<?> failed() {
-        return new Result<>(ResultEnum.FAILED.getCode(), ResultEnum.FAILED.getMessage(), null);
+        return failed(ResultEnum.FAILED.getMessage());
     }
 
     public static Result<?> failed(String message) {
-        return new Result<>(ResultEnum.FAILED.getCode(), message, null);
+        return failed(ResultEnum.FAILED.getCode(), message);
+    }
+
+    public static Result<?> failed(Integer code, String message) {
+        return new Result<>(code, message, null);
     }
 
     public static Result<?> failed(IResult result) {
